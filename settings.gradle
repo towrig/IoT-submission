@@ -1,2 +1,4 @@
 rootProject.name = 'IoT-submission'
 
+include 'weather-api'
+include 'weather-frontend'
