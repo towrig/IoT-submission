@@ -17,39 +17,39 @@ import java.util.List;
 public class ForecastRepositoryTest {
 
     @Autowired
-    ForecastRepository bookRepository;
+    ForecastRepository forecastRepository;
 
     @BeforeEach
     void setUp() {
-        bookRepository.deleteAll();
+        forecastRepository.deleteAll();
 
-        Forecast f1 = new Forecast(1L, "Tartu", "Must", "Kaunis", 0L, 3L);
-        Forecast f2 = new Forecast(2L, "Tallinn", "Pime", "Hall", -20L, -10L);
-        Forecast f3 = new Forecast(3L, "Metsatarguse", "Pime", "Tume", 0L, 10L);
+        Forecast f1 = new Forecast(1L, "2023-11-03", "Tartu", "Must", "Kaunis", 0L, 3L);
+        Forecast f2 = new Forecast(2L,"2023-11-03", "Tallinn", "Pime", "Hall", -20L, -10L);
+        Forecast f3 = new Forecast(3L,"2023-11-03", "Metsatarguse", "Pime", "Tume", 0L, 10L);
 
-        bookRepository.saveAll(List.of(f1, f2, f3));
+        forecastRepository.saveAll(List.of(f1, f2, f3));
     }
 
     @Test
     void databaseHasData() {
-        List<Forecast> forecasts = bookRepository.findAll();
+        List<Forecast> forecasts = forecastRepository.findAll();
         assertThat(forecasts.size()).isEqualTo(3);
     }
 
     @Test
     void findByLocation_usesStartsWith() {
-        List<Forecast> forecastsWithTa = bookRepository.findByLocation("Ta"); //Tartu & Tallinn
+        List<Forecast> forecastsWithTa = forecastRepository.findByLocation("Ta"); //Tartu & Tallinn
         assertThat(forecastsWithTa.size()).isEqualTo(2);
 
-        List<Forecast> forecastsWithTar = bookRepository.findByLocation("Tar"); //Tartu
+        List<Forecast> forecastsWithTar = forecastRepository.findByLocation("Tar"); //Tartu
         assertThat(forecastsWithTar.size()).isEqualTo(1);
     }
 
     @Test
     void findByLocation_isCaseInsensitive() {
-        List<Forecast> forecasts1 = bookRepository.findByLocation("Tar");
-        List<Forecast> forecasts2 = bookRepository.findByLocation("tAr");
-        List<Forecast> forecasts3 = bookRepository.findByLocation("tar");
+        List<Forecast> forecasts1 = forecastRepository.findByLocation("Tar");
+        List<Forecast> forecasts2 = forecastRepository.findByLocation("tAr");
+        List<Forecast> forecasts3 = forecastRepository.findByLocation("tar");
 
         assertThat(forecasts1.size()).isEqualTo(forecasts2.size());
         assertThat(forecasts2.size()).isEqualTo(forecasts3.size());
