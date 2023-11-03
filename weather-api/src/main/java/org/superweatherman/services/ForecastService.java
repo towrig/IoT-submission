@@ -26,12 +26,17 @@ public class ForecastService {
         return db.findByLocation(location);
     }
 
+    public void clearForecasts() {
+        db.deleteAll();
+    }
+
     /**
      * Adds all the forecasts in the xml string to repository
      * @param xmlString - xml string (has to be in ilmateenistus format)
      * @return boolean indicating if the process was successful or not
      */
     public boolean addForecastsFromXML(String xmlString) {
+        clearForecasts();
         try {
             //parse forecast xml to XMlForecastData object
             XMLForecastsData rawXMLForecastsData = xmlMapper.readValue(xmlString, XMLForecastsData.class);
