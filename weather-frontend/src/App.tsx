@@ -1,32 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {PureComponent} from 'react'
 import './App.css'
+import {connect, ConnectedProps} from "react-redux";
+import {RootState} from "./store/store.ts";
+import SearchBar from "./components/SearchBar";
 
-function App() {
-  const [count, setCount] = useState(0)
+class AppComponent extends PureComponent<Props> {
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    onSearch = (searchValue: string) => {
+        const { dispatch } = this.props;
+        dispatch({type: "SEARCH_WEATHER_LOCATION", searchValue});
+    }
+
+    render() {
+
+        return (
+            <div>
+                <h1>Weather Forecast</h1>
+                <h3>made by Karl Kuusik</h3>
+                <SearchBar onSearch={this.onSearch} />
+            </div>
+        )
+    }
 }
 
-export default App
+const mapStateToProps = (state: RootState) => {
+    console.log({state});
+    return {};
+}
+const connector = connect(mapStateToProps);
+type Props = ConnectedProps<typeof connector>;
+const App = connector(AppComponent);
+export default App;
