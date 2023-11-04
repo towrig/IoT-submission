@@ -1,6 +1,7 @@
 import {PureComponent} from 'react';
 import {WeatherLocation} from "../../api/types.ts";
 import "./styles.scss";
+import { format } from 'date-fns';
 
 interface Props {
     location?: WeatherLocation;
@@ -12,12 +13,12 @@ class WeatherCard extends PureComponent<Props> {
         if (!location) return null;
 
         const { date, locationName, dayWeather, nightWeather, tempMax, tempMin } = location;
-        //format(date)
+        const formattedDate = format(new Date(date), "dd. LLL yyyy");
 
         return (
             <div className="weather-card">
                 <div className="weather-card__date">
-                    {locationName} <span className="weather-card__date-text">{date}</span>
+                    {locationName} <span className="weather-card__date-text">{formattedDate}</span>
                 </div>
                 <div className="weather-card__data">
                     <div className="weather-card__data__day">

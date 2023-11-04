@@ -39,19 +39,6 @@ h1 {
   line-height: 1.1;
 }
 
-.weather-cards {
-  margin-top: 3em;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.weather-cards__none {
-  border: 1px solid var(--dark-gray);
-  border-radius: 12px;
-  background-color: var(--black-1);
-  padding: 2em;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;

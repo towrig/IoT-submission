@@ -33,8 +33,7 @@ class AppComponent extends PureComponent<Props> {
         return (
             <div>
                 <h1>Weather Forecast</h1>
-                <h3>made by Karl Kuusik</h3>
-                <p>Note: </p>
+                <p>Note: the location will be searched from the database using "starts-with" logic and matches will be displayed instantly while typing.</p>
                 <SearchBar onSearch={this.onSearch} />
 
                 <div className="weather-cards">

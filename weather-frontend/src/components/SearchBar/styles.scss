@@ -1,3 +1,19 @@
 .weather-searchbar {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  color: #FFF;
 
+  &:hover,
+  &:focus{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
 }
