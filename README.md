@@ -2,7 +2,7 @@
 
 ## Modules
 * `weather-api` - Spring Boot application serving data from a weather API.
-* `weather-frontend` - React + Vite frontend 
+* `weather-frontend` - React + Vite frontend with redux-saga state management.
 
 ## Quick guide
 Before running the following commands, make sure you are running Java 17+ and Node.JS 18+-.
