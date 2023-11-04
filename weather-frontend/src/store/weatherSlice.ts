@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {WeatherLocation} from "../api/types.ts";
+import {RootState} from "./store.ts";
 
 interface WeatherState {
     locations: WeatherLocation[],
@@ -18,3 +19,10 @@ export const weatherSlice = createSlice({
         }
     }
 })
+export const {
+    setLocations
+} = weatherSlice.actions;
+
+
+/* Selectors */
+export const selectLocations = (state: RootState) => state.weather.locations;

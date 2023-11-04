@@ -6,6 +6,5 @@ interface SearchWeatherLocationAction {
 }
 
 export function* searchWeatherLocation(action: SearchWeatherLocationAction) {
-    console.log("FETCHING:", action.searchValue)
     yield fetchWeatherByLocation(action.searchValue);
 }

@@ -3,6 +3,7 @@ import './App.css'
 import {connect, ConnectedProps} from "react-redux";
 import {RootState} from "./store/store.ts";
 import SearchBar from "./components/SearchBar";
+import {selectLocations} from "./store/weatherSlice.ts";
 
 class AppComponent extends PureComponent<Props> {
 
@@ -12,6 +13,8 @@ class AppComponent extends PureComponent<Props> {
     }
 
     render() {
+        const { locations } = this.props;
+        console.log("RENDER LOCATIONS:", locations);
 
         return (
             <div>
@@ -24,8 +27,9 @@ class AppComponent extends PureComponent<Props> {
 }
 
 const mapStateToProps = (state: RootState) => {
-    console.log({state});
-    return {};
+    return {
+        locations: selectLocations(state)
+    };
 }
 const connector = connect(mapStateToProps);
 type Props = ConnectedProps<typeof connector>;
