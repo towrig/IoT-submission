@@ -22,7 +22,7 @@ class SearchBar extends PureComponent<Props, State> {
         const {onSearch} = this.props;
         const value = e.target.value;
 
-        if(value.length > 1) {
+        if(value.length > 0) {
             onSearch(value);
         }
 
