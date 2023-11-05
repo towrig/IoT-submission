@@ -1,0 +1,26 @@
+plugins {
+    id 'base'
+    id "com.github.node-gradle.node" version "7.0.1"
+}
+
+node {
+    /* gradle-node-plugin configuration
+       https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
+
+       Task name pattern:
+       ./gradlew npm_<command> Executes an NPM command.
+    */
+
+    // Version of node to use.
+    version = '18.14.2'
+
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    download = true
+}
+
+task start(type: NpmTask) {
+    npmCommand = ['run', 'start']
+}
+
+assemble.dependsOn npmInstall

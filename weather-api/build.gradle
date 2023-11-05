@@ -22,12 +22,14 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.1'
+
+    runtimeOnly project(':weather-frontend')
+}
+
+task runInParallel(dependsOn: ['bootRun', ':weather-frontend:start']) {
+    // Empty task action, as it's only used to create a task dependency
 }
 
 test {
     useJUnitPlatform()
-}
-
-jar {
-    enabled = true
 }
